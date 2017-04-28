@@ -1,24 +1,30 @@
 package fishing.data;
 
-import org.parabot.environment.api.utils.Timer;
-
 /**
  * Created by @Ruben.
  */
 
-public class FishingData {
+public enum FishingData {
 
-    //Creates a new @Timer instance.
-    public Timer timer = new Timer();
+    MONKFISH(304, 326, 0);
 
-    //Holds the amount of caskets gained.
-    public int casketAmount;
+    private final int itemReq, spotId, actionId;
 
-    //Holds the amount of fish caught.
-    public int fishCaught;
+    private FishingData(int itemReq, int spotId, int actionId) {
+        this.itemReq = itemReq;
+        this.spotId = spotId;
+        this.actionId = actionId;
+    }
 
-    //Gets the runtime.
-    public String getRunTime() {
-        return timer.toString();
+    public int getItemReq() {
+        return itemReq;
+    }
+
+    public int getSpotId() {
+        return spotId;
+    }
+
+    public int getActionId() {
+        return actionId;
     }
 }

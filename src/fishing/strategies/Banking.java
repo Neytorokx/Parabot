@@ -1,5 +1,6 @@
 package fishing.strategies;
 
+import fishing.data.BotData;
 import org.parabot.environment.scripts.framework.Strategy;
 import org.rev317.min.api.methods.Bank;
 import org.rev317.min.api.methods.Inventory;
@@ -15,11 +16,12 @@ public class Banking implements Strategy {
 
     @Override
     public boolean activate() {
-        return Inventory.isFull() && Players.getMyPlayer().getAnimation() == -1;
+        return Inventory.isFull() && Players.getMyPlayer().getAnimation() == -1 && Bank.isOpen();
     }
 
     @Override
     public void execute() {
+        BotData.setStatus("Banking.");
         if(Bank.open()) {
             Bank.depositAllExcept(netId);
         }
